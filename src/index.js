@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom/client';
 const App = () => {
   return (
     <div >
-      
+      <h3>React Js</h3>
       <div style={{backgroundColor:'blue', color:'white'}}>Hello Class Based Component Application</div>
 
     </div>
