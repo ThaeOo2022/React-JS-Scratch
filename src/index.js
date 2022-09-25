@@ -1,14 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import App from './App';
-
-const App=()=>{
-  return(
-    <div>Hello from React Js Class Based Component! This is introduction. Seee you next commit.</div>
+const geofun=()=>{
+  window.navigator.geolocation.getCurrentPosition(
+    (position)=>console.log(position),
+    (err)=>console.log(err)
   );
 }
 
+class App extends React.Component{
+  render(){
+    
+
+geofun();
+
+  return(
+    <div>Latitude:</div>
+  );
+}
+}
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
