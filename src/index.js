@@ -10,25 +10,24 @@ class App extends React.Component {
 
 
   }
-
+  componentDidMount() {
+    window.navigator.geolocation.getCurrentPosition(
+      (position) => this.setState({ lat: position.coords.latitude }),
+      (e) => this.setState({ errorMessage: e.message }) 
+    );
+  }
   render() {
 
-    window.navigator.geolocation.getCurrentPosition(
-      (position) => {
-        this.setState({ lat: position.coords.latitude});
-     
-      },
-      (err) => {this.setState({errorMessage:err.message})}
-    );
-     if(this.state.errorMessage && ! this.state.lat ){
-      return <div>Error:{this.state.errorMessage}</div>
-     }
-     if(!this.state.errorMessage &&  this.state.lat ){
-      return <div>Latitude:{this.state.lat}</div>
-     }
-    
 
-   
+    if (this.state.errorMessage && !this.state.lat) {
+      return <div>Error:{this.state.errorMessage}</div>
+    }
+    if (!this.state.errorMessage && this.state.lat) {
+      return <div>Latitude:{this.state.lat}</div>
+    }
+
+
+
   }
 }
 const root = ReactDOM.createRoot(document.getElementById('root'));
