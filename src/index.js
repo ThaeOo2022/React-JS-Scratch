@@ -1,21 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import SeasonDisp from './SeasonDisp';
+
 
 
 class App extends React.Component {
-  constructor(props) {
+  /*constructor(props) {
     super(props);
     this.state = { lat: null, errorMessage: null };
-
-
-
-  }
+  }*/
+  state={lat:null, errorMessage:''};
   componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(
       (position) => this.setState({ lat: position.coords.latitude }),
       (e) => this.setState({ errorMessage: e.message }) 
     );
   }
+  
   render() {
 
 
@@ -23,11 +24,10 @@ class App extends React.Component {
       return <div>Error:{this.state.errorMessage}</div>
     }
     if (!this.state.errorMessage && this.state.lat) {
-      return <div>Latitude:{this.state.lat}</div>
+      return <div>Latitude:{this.state.lat} <SeasonDisp lat={this.state.lat}/>  </div>
     }
-
-
-
+    
+    
   }
 }
 const root = ReactDOM.createRoot(document.getElementById('root'));
