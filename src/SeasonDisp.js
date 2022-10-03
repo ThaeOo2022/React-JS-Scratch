@@ -11,14 +11,23 @@ function SeasonDisp(props) {
         return lat > 0 ? "winter" : "summer";
       }
     }
+    const seasonConfig={
+      summer:{
+        text:"It is hot",
+        iconName:"sun"
+      },
+      winter:{
+        text:"It is cold",
+        iconName:"snowflake"
+      }
+    }
     const season=getSeason(props.lat, new Date().getMonth());
-    //const seasonDescription= season === 'winter' ? 'Burr it is Chilly' : 'Let hit the beach';
-    const icon= season === 'winter' ? 'snowflake' : 'sun';
+   const {text,iconName}=seasonConfig[season];
     return (
       <div>
-        <i className={`${icon} icon`}></i>
-        Season : {season === 'winter' ? 'Burr it is Chilly' : 'Let hit the beach'}
-        <i className={`${icon} icon`}></i>
+        <i className={`${iconName} icon`}></i> <i className={`${iconName} icon`}></i>
+        {text}
+        <i className={`${iconName} icon`}></i>  <i className={`${iconName} icon`}></i>
       </div>
     )
   }
