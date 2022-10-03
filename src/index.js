@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import SeasonDisp from './SeasonDisp';
 
 
-
 class App extends React.Component {
   /*constructor(props) {
     super(props);
@@ -20,12 +19,17 @@ class App extends React.Component {
   render() {
 
 
-    if (this.state.errorMessage && !this.state.lat) {
+    /*if (this.state.errorMessage && !this.state.lat) {
       return <div>Error:{this.state.errorMessage}</div>
     }
     if (!this.state.errorMessage && this.state.lat) {
       return <div>Latitude:{this.state.lat} <SeasonDisp lat={this.state.lat}/>  </div>
-    }
+    }*/
+    return(
+      <div>
+        <SeasonDisp lat={this.state.lat}/>
+      </div>
+    );
     
     
   }
