@@ -3,9 +3,9 @@ class SearchBar extends React.Component {
     state = {
         term: "Hi there"
     }
-    onSubmitChange(event){
+    onSubmitChange=(event)=>{
         event.preventDefault();
-        console.log("from submit event");
+        this.props.onSu(this.state.term);
     }
     render() {
         return (
