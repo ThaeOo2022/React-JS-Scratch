@@ -5,7 +5,7 @@ import SearchBar from "./components/SearchBar";
 
 class App extends React.Component {
 
-  state = { images: [] };
+  state = { images:[] };
    onSub=async (term) =>{
     const res = await unsplash.get('/search/photos', {
       params: { query: term },
