@@ -3,11 +3,11 @@ class SearchBar extends React.Component {
     state = { term: '' };
     onInputChange=e=>{
         this.setState({term:e.target.value});
-        console.log(this.state.term);
+       // console.log(this.state.term);
     }
     onFormSubmit=e=>{
        e.preventDefault();
-
+        this.props.onFormSubmit(this.state.term);
     }
     render() {
         return (
