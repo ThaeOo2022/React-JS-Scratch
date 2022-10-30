@@ -18,7 +18,10 @@ const Search = () => {
             });
             setResult(data.query.search);
         }
-        search();
+        if (term) {
+            search();
+        }
+
     }, [term]);
 
     const renderedList = results.map(result => {
