@@ -3,36 +3,41 @@ import axios from 'axios';
 
 const Search = () => {
     const [term, setTerm] = useState('programming');
-    const [results,setResult]=useState([]);
+    const [results, setResult] = useState([]);
 
-    useEffect(()=>{
-       const search=async ()=>{
-        const {data}=await axios.get('https://en.wikipedia.org/w/api.php',{
-            params:{
-                action:'query',
-                list:'search',
-                origin:'*',
-                format:'json',
-                srsearch:term,
-            }
-        });
-        setResult(data.query.search);
-       }
-       search();
-    },[term]);
+    useEffect(() => {
+        const search = async () => {
+            const { data } = await axios.get('https://en.wikipedia.org/w/api.php', {
+                params: {
+                    action: 'query',
+                    list: 'search',
+                    origin: '*',
+                    format: 'json',
+                    srsearch: term,
+                }
+            });
+            setResult(data.query.search);
+        }
+        search();
+    }, [term]);
 
-    const renderedList=results.map(result=>{
-        return(
-            
-                <div key={result.pageid} className="item">
-                    <div className="content">
-                        <div className="header">
-                            {result.title}
-                        </div>
-                        <div dangerouslySetInnerHTML={{__html:result.snippet}}></div>
-                    </div>
+    const renderedList = results.map(result => {
+        return (
+
+            <div key={result.pageid} className="item">
+                <div className="right floated content">
+                    <a className="ui button" href={`https://en.wikipedia.org?curid= ${result.pageid}`}>
+                        Go
+                    </a>
                 </div>
-          
+                <div className="content">
+                    <div className="header">
+                        {result.title}
+                    </div>
+                    <div dangerouslySetInnerHTML={{ __html: result.snippet }}></div>
+                </div>
+            </div>
+
         );
     });
 
@@ -45,7 +50,7 @@ const Search = () => {
                         value={term}
                         onChange={e => setTerm(e.target.value)}
                         className="input" />
-                        {console.log(results)}
+                    {console.log(results)}
                 </div>
             </div>
             <div className="ui celled list">{renderedList}</div>
