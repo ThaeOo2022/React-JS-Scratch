@@ -18,10 +18,13 @@ const Search = () => {
             });
             setResult(data.query.search);
         }
-        if (term) {
-            search();
-        }
-
+        setTimeout(()=>{
+            if (term) {
+                search();
+            }
+    
+        },500);
+        
     }, [term]);
 
     const renderedList = results.map(result => {
@@ -33,7 +36,7 @@ const Search = () => {
                         Go
                     </a>
                 </div>
-                <div className="content">
+                <div className="cont`ent">
                     <div className="header">
                         {result.title}
                     </div>
