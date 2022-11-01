@@ -18,13 +18,18 @@ const Search = () => {
             });
             setResult(data.query.search);
         }
-        setTimeout(()=>{
+        const timeOutId = setTimeout(() => {
             if (term) {
                 search();
             }
-    
-        },500);
-        
+
+        }, 500);
+
+        return () => {
+            clearTimeout(timeOutId);
+        };
+
+
     }, [term]);
 
     const renderedList = results.map(result => {
