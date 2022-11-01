@@ -18,16 +18,21 @@ const Search = () => {
             });
             setResult(data.query.search);
         }
-        const timeOutId = setTimeout(() => {
-            if (term) {
-                search();
-            }
+        if (term && !results.length) {
+            search();
+        } else {
+            const timeOutId = setTimeout(() => {
+                if (term) {
+                    search();
+                    console.log("from settimeout");
+                }
 
-        }, 500);
+            }, 5000);
 
-        return () => {
-            clearTimeout(timeOutId);
-        };
+            return () => {
+                clearTimeout(timeOutId);
+            };
+        }
 
 
     }, [term]);
